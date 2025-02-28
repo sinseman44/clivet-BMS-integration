@@ -1,5 +1,5 @@
 # clivet-BMS-integration
-Water heater support for Home Assistant via BMS
+
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 [![License](https://img.shields.io/github/license/sinseman44/clivet-BMS-Integration?style=for-the-badge)](https://github.com/sinseman44/clivet-BMS-Integration/blob/main/LICENSE)
 [![Latest Release](https://img.shields.io/github/v/release/sinseman44/clivet-BMS-Integration?style=for-the-badge)](https://github.com/sinseman44/clivet-BMS-Integration/releases)
