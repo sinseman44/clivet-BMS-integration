@@ -1,0 +1,17 @@
+{
+    "domain": "clivet_bms",
+    "name": "Clivet BMS Modbus RS485",
+    "codeowners": ["@sinseman44"],
+    "config_flow": true,
+    "documentation": "https://github.com/sinseman44/clivet-BMS-Integration",
+    "issue_tracker": "https://github.com/sinseman44/clivet-BMS-Integration/issues",
+    "integration_type": "device",
+    "iot_class": "local_polling",
+    "quality_scale": "silver",
+    "loggers": ["clivet"],
+    "requirements": [
+	"pymodbus==3.7.4",
+	"pyserial==3.5"	
+    ],
+    "version": "0.0.1"
+}

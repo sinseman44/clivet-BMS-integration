@@ -1,0 +1,55 @@
+{
+    "title": "Clivet BMS",
+    "config": {
+        "flow_title": "Configurazione BMS Clivet",
+        "step": {
+            "user": {
+                "title": "Modalità di comunicazione Modbus",
+                "description": "Scegli la modalità di comunicazione in base al tipo di connessione con il controller Clivet",
+                "data": {
+                    "Mode": "Moda"
+                }
+            },
+            "rtu": {
+                "title": "Configurazione Client Modbus RTU",
+                "description": "Informazioni di connessione sul dispositivo Clivet",
+                "data": {
+                    "Name": "Nome del dispositivo",
+                    "Device": "Dispositivo di comunicazione RS485 Modbus",
+                    "Address": "Indirizzo del dispositivo",
+                    "Baudrate": "Velocità Modbus",
+                    "Sizebyte": "Dimensione dei dati",
+                    "Parity": "Parità",
+                    "Stopbits": "Numero di bit di stop",
+                    "Timeout": "Timeout",
+                    "Debug": "Debug"
+                }
+            },
+            "tcp": {
+                "title": "Configurazione Client Modbus TCP",
+                "description": "Informazioni di connessione sul dispositivo Clivet",
+                "data": {
+                    "Name": "Nome del dispositivo",
+                    "Modbus": "Indirizzo Modbus del dispositivo",
+                    "Address": "Indirizzo del dispositivo",
+                    "Port": "porta di comunicazione",
+                    "Retries": "Numero di tentativi di riconnessione",
+                    "Reconnect_delay_min": "Tempo minimo di riconnessione",
+                    "Reconnect_delay_max": "Tempo massimo di riconnessione",
+                    "Timeout": "Timeout",
+                    "Debug": "Debug"
+                }
+            },
+            "temp": {
+                "title": "Affichage de la température lue dans l'intégration",
+                "description": "Deux capteurs de température en position haute et basse de la cuve",
+                "data": {
+                    "Choice": "Choix"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Impossibile connettersi al sistema Clivet"
+        }
+    }
+}
