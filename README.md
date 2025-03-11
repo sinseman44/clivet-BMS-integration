@@ -115,7 +115,7 @@ The following attributes are available for `sensor` platform entities:
 
 ### Diagnostic
 
-![sensors_entities](png/water_heater_diag_sensors_entities.png)
+![sensors_diag_entities](png/water_heater_diag_sensors_entities.png)
 
 The following attributes are available for diagnostic `sensor` platform entities:
 - Alarm (On/Off)
@@ -131,7 +131,30 @@ The following attributes are available for diagnostic `sensor` platform entities
 - Wire controller firmware version
 
 ## Switch
-TODO
+
+![switches_entities](png/water_heater_switches_entities.png)
+
+The following parameters can be controlled for the `switch` platform entities:
+- Disinfect Mode
+- Remoter Mode
+- Smart Grid
+- Solar Signal EVU
+- Unit (°C or °F)
+
+### Smart Grid management
+
+The unit is Smart Grid Ready certified and is equipped with logic for connection to devices that balance the loads connected to the electrical grid and optimize the overall consumption of electrical energy. 
+The connection is optional, the function can be activated by the keypad and is linked to the ON/OFF SG input, which receives a status signal from the electrical grid. 
+The function is enabled by default, it does not require any keypad configuration and is linked to the ON/OFF EVU input, which receives a signal from the energy meter indicating when there is an overproduction of free energy for the unit. 
+The unit is also configured for self-consumption of the overproduced energy thanks to a photovoltaic system, used to store thermal energy free of charge in the DHW water heater
+
+| Energy Cost     |  SG   | EVU      | Work    |
+|---              |:-:    |:-:       |---      |
+| Free            |  ON   | ON       | The set point is forced to TS = 70 °C, The electrical resistance is activated if T5U < 65 °C and is deactivated when T5U ≥ 70 °C        |
+| Economic        |  OFF  | ON       | The set point is forced to TS = 70 °C, The electrical resistance is activated if T5U < 65 °C and is deactivated when T5U ≥ 70 °C        |
+| Default         |  OFF  | OFF      | Default        |
+| Expensive       |  ON   | OFF      | The anti-legionella cycle will be carried out in accordance with the configurations indicated     |
+
 
 ### Disinfect mode
 In "Disinfect" mode, the unit starts heating the water to a temperature of 70°C in order to kill any legionella bacteria present in the tank. 
