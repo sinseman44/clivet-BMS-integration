@@ -84,7 +84,7 @@ if the outdoor temperature returns to the operating range of the heat pump, the 
 
 
 ### Vacation Mode
-When the "VACATION" button is pressed, the appliance maintains the water at 15°C during the specified period of absence. This saves energy.
+When the "VACATION" button is pressed (mode AWAY), the appliance maintains the water at 15°C during the specified period of absence. This saves energy.
 The default vacation days are 14. they can be set in a range of 1 to 360 (__only on the unit__).
 
 ## Sensors
