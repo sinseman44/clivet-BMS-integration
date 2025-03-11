@@ -82,12 +82,17 @@ if the outdoor temperature returns to the operating range of the heat pump, the 
 
 ![Water_heater_entity](png/Water_Heater_entity.png)
 
+the current temperature is the result of 2 temperature sensors present in the tank (Water temperature in lower position and Water temperature in upper position).
+This value can be calculated in 3 different ways :
+- The maximum between the 2 temperature sensors (default use by the unit display)
+- The minimum between the 2 temperature sensors
+- The average between the 2 temperature sensors
 
 ### Vacation Mode
 When the "VACATION" button is pressed (mode AWAY), the appliance maintains the water at 15°C during the specified period of absence. This saves energy.
 The default vacation days are 14. they can be set in a range of 1 to 360 (__only on the unit__).
 
-## Sensors
+## Sensors and binary sensors
 
 ![sensors_entities](png/sensors_entities.png)
 
@@ -108,8 +113,6 @@ The following attributes are available for `sensor` platform entities:
 
 ![tank_sensors](png/sensors_tank_clivet.png)
 
-## Binary Sensors
-TODO
 ## Switch
 TODO
 
