@@ -106,6 +106,7 @@ The following attributes are available for `sensor` platform entities:
 - Water temperature in lower tank position
 - Water temperature in upper tank position
 
+![tank_sensors](png/sensors_tank_clivet.png)
 
 ## Binary Sensors
 TODO
