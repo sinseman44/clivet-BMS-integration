@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2025-03-11T14:12:59.203Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.0 Chrome/114.0.5735.289 Electron/25.8.3 Safari/537.36" etag="ueq2BWsVuffrhNcmOQkp" version="22.0.0" type="device" pages="8">
+<mxfile host="Electron" modified="2025-03-11T14:42:02.873Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.0 Chrome/114.0.5735.289 Electron/25.8.3 Safari/537.36" etag="IrzRHJDbaurHCu83wCgj" version="22.0.0" type="device" pages="9">
   <diagram id="0otlS88Cbq8QXbHcHbrz" name="architecture">
-    <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1036" dy="606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1934,6 +1934,53 @@
         </mxCell>
         <mxCell id="Ejbs264IztUfBLygKgns-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Ejbs264IztUfBLygKgns-21" target="Ejbs264IztUfBLygKgns-21">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="2gfDbXj70gGka5s-cuyV" name="Tank">
+    <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MCLsG15A83CzHZEiLr1y-3" value="" style="shape=mxgraph.pid.vessels.tank;html=1;pointerEvents=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;dashed=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;shadow=1;gradientColor=none;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="311.37" y="280" width="132.63" height="315" as="geometry" />
+        </mxCell>
+        <mxCell id="MCLsG15A83CzHZEiLr1y-4" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=5;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="440" as="sourcePoint" />
+            <mxPoint x="360" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MCLsG15A83CzHZEiLr1y-5" value="TANK" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="347.68" y="400" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MCLsG15A83CzHZEiLr1y-6" value="Electric&lt;br&gt;Heater" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="240" y="422.5" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MCLsG15A83CzHZEiLr1y-7" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+          <mxGeometry x="320" y="360" width="10" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="MCLsG15A83CzHZEiLr1y-8" value="Temperature sensor in upper position (T5U)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="210" y="335" width="100" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="MCLsG15A83CzHZEiLr1y-9" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+          <mxGeometry x="320" y="505" width="10" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="MCLsG15A83CzHZEiLr1y-10" value="Temperature sensor in lower position (T5L)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="210" y="480" width="100" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="MCLsG15A83CzHZEiLr1y-11" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.bendArrow;dy=6;dx=16.5;notch=10;arrowHead=35;rounded=1;flipH=1;flipV=0;rotation=-90;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
+          <mxGeometry x="390" y="472" width="60" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="MCLsG15A83CzHZEiLr1y-12" value="&lt;b&gt;Water Inlet&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="500" y="495" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MCLsG15A83CzHZEiLr1y-13" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.bendArrow;dy=6;dx=16.5;notch=10;arrowHead=35;rounded=1;flipH=0;flipV=1;rotation=-90;fillColor=#fad9d5;strokeColor=#ae4132;" vertex="1" parent="1">
+          <mxGeometry x="407.68" y="250" width="60" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="MCLsG15A83CzHZEiLr1y-14" value="&lt;b&gt;Water Outlet&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="500" y="320" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
