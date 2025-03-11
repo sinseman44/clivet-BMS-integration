@@ -75,7 +75,8 @@ _In IEEE 802.11 (Wi-Fi) terminology, a station (abbreviated as STA) is a device 
 ## Water_heater
 TODO
 ### Vacation Mode
-When the "VACATION" button is pressed, the appliance maintains the water at 15°C during the specified period of absence. This saves energy
+When the "VACATION" button is pressed, the appliance maintains the water at 15°C during the specified period of absence. This saves energy.
+The default vacation days are 14. they can be set in a range of 1 to 360 (__only on the unit__).
 
 ## Sensors
 TODO
