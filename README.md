@@ -51,6 +51,12 @@ See [Github To Do & Bug List](https://github.com/sinseman44/clivet-BMS-Integrati
 
 ## Architecture
 
+Two different architectures, a first wired one where the Clivet system is connected to the Home Assistant server via a USB/RS485 dongle and a second one wirelessly, the Clivet system is connected to the RS485/WIFI device which is connected to the same WIFI network as the Home Assistant server.
+
+![Architecture](png/modbus_architecture.png)
+
+_In IEEE 802.11 (Wi-Fi) terminology, a station (abbreviated as STA) is a device that has the capability to use the 802.11 protocol. For example, a station may be a laptop, a desktop PC, PDA, access point or Wi-Fi phone. An STA may be fixed, mobile or portable._
+
 ## Requirements
 
 * An installation of Home Assistant with free USB port (for wired systems).
