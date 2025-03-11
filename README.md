@@ -88,7 +88,25 @@ When the "VACATION" button is pressed (mode AWAY), the appliance maintains the w
 The default vacation days are 14. they can be set in a range of 1 to 360 (__only on the unit__).
 
 ## Sensors
-TODO
+
+![sensors_entities](png/sensors_entities.png)
+
+The following attributes are available for `sensor` platform entities:
+- 4 way valve (On/Off)
+- Compressor (On/Off)
+- Compressor current
+- Compressor exhaust temperature
+- Compressor running time (seconds)
+- Condenser temperature
+- Defrost status (On/Off)
+- Display temperature (Current temperature set in the unit display)
+- Electric Heater (On/Off)
+- Outdoor ambient temperature
+- Suction temperature
+- Water temperature in lower tank position
+- Water temperature in upper tank position
+
+
 ## Binary Sensors
 TODO
 ## Switch
