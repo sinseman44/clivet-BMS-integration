@@ -74,12 +74,20 @@ _In IEEE 802.11 (Wi-Fi) terminology, a station (abbreviated as STA) is a device 
 
 ## Water_heater
 TODO
+### Vacation Mode
+When the "VACATION" button is pressed, the appliance maintains the water at 15°C during the specified period of absence. This saves energy
+
 ## Sensors
 TODO
 ## Binary Sensors
 TODO
 ## Switch
 TODO
+
+### Disinfect mode
+In "Disinfect" mode, the unit starts heating the water to a temperature of 70°C in order to kill any legionella bacteria present in the tank. 
+The operating mode will deactivate when 70°C is reached.
+
 # Debugging
 
 Whenever you write a bug report, it helps tremendously if you indicate sufficient debug logs directly (otherwise we will just ask for them and it will take longer). So please enable debug logs like this and include them in your issue:
