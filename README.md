@@ -73,12 +73,14 @@ _In IEEE 802.11 (Wi-Fi) terminology, a station (abbreviated as STA) is a device 
 - Provides `water_heater`, `sensors`, `binary_sensors` and `switch`
 
 ## Water_heater
-TODO
+
 The unit has two types of heat sources: heat pump (compressor) and resistance. The unit automatically selects the most suitable heat source to heat the water to the desired temperature.
 The heat source is selected automatically by the unit, but it is also possible to use the resistance manually.
 
 The default heat source is the heat pump. If the outdoor temperature is outside the operating range of the heat pump, the heat pump will turn off, the unit will automatically activate the electric heater.
 if the outdoor temperature returns to the operating range of the heat pump, the electrical resistance deactivates and the heat pump is automatically reactivated.
+
+![Water_heater_entity](png/Water_Heater_entity.png)
 
 
 ### Vacation Mode
