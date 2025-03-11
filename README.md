@@ -113,6 +113,23 @@ The following attributes are available for `sensor` platform entities:
 
 ![tank_sensors](png/sensors_tank_clivet.png)
 
+### Diagnostic
+
+![sensors_entities](png/water_heater_diag_sensors_entities.png)
+
+The following attributes are available for diagnostic `sensor` platform entities:
+- Alarm (On/Off)
+- Clivet Modbus connection
+- Error Code
+- Fan speed (Off/Low/Medium/High)
+- Modbus debug switch => To activate or deactivate Modbus frame in home_assistant.log
+- Solar kit status (On/Off)
+- Solar panel water pump (On/Off)
+- Wifi connection status (On/Off)
+- Model
+- PCB firmware version
+- Wire controller firmware version
+
 ## Switch
 TODO
 
