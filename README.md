@@ -5,6 +5,8 @@
 [![Latest Release](https://img.shields.io/github/v/release/sinseman44/clivet-BMS-Integration?style=for-the-badge)](https://github.com/sinseman44/clivet-BMS-Integration/releases)
 <br />
 
+![intro](png/water_heater.png)
+
 _Disclaimer : This is not a clivet official integration and use at your own risk._
 
 **clivet-BMS-Integration** is an integration of clivet water heater system into Home Assistant using BMS (Building Management System) and Modbus protocol RTU (RS485) or TCP.
