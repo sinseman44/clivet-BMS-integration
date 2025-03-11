@@ -53,10 +53,13 @@ See [Github To Do & Bug List](https://github.com/sinseman44/clivet-BMS-Integrati
 
 ## Requirements
 
-* An installation of Home Assistant with free USB port.
+* An installation of Home Assistant with free USB port (for wired systems).
 * A RS485 USB dongle (Example: DSD Tech SH-U11) for wired systems or a RS485/WIFI device (Example: Elfin EW11A or Elfin EW11-0, [example of configuration](EW11-config.md)) for wireless systems.
 * A clivet water heater system.
 * Enabling Modbus communication.
+* A XHB2.54-3Y connector for the Modbus connector on the clivet motherboard.
+
+![connector](png/XHB2_54-3Y.png)
 
 # Features
 
