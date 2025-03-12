@@ -67,6 +67,16 @@ _In IEEE 802.11 (Wi-Fi) terminology, a station (abbreviated as STA) is a device 
 
 ![connector](png/XHB2_54-3Y.png)
 
+## Connecting
+
+### with clivet main board and RS485 USB Dongle
+
+![Schematic1](png/schematics_wire.png)
+
+* Connector CN26 Modbus Y to USB dongle A+
+* Connector CN26 Modbus X to USB dongle B-
+* Connector CN26 Modbus E to USB dongle GND
+
 # Features
 
 - Integrates local API to read/write Modbus clivet registers
