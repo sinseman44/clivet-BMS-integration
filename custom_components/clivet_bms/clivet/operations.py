@@ -241,6 +241,7 @@ class Operations:
             _LOGGER.error('Error getting command values 100 to 119')
             return _ret, {}
 
+        _LOGGER.debug("[DEBUG] OPE:{}".format(_regs[0]))
         _cmd_values['ope'] = const.OperatingMode(_regs[0])
         _cmd_values['T5U'] = self.__transform_unit(_cmd_values['unit'], _regs[1])
         _cmd_values['T5L'] = self.__transform_unit(_cmd_values['unit'], _regs[2])
@@ -459,11 +460,7 @@ class Operations:
         _reg |= (int(cmd_funcs['desinfect']) & 0b1) << 5
         _reg |= (int(cmd_funcs['unit']) & 0b1) << 6
         
-        #### DEBUG ON ####
-        _LOGGER.debug('[SET COMMAND] _reg:{}'.format(bin(_reg)))
-        _ret = True
-        #_ret = await self.__async_write_register(reg = const.REG_CMD_FUNCS, val = _reg)
-        #### DEBUG OFF ####
+        _ret = await self.__async_write_register(reg = const.REG_CMD_FUNCS, val = _reg)
         if not _ret:
             _LOGGER.error('Error writing command functions')
 

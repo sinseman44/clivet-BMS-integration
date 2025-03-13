@@ -54,6 +54,10 @@ from .clivet.const import (
     MAX_C_TEMP,
     MIN_F_TEMP,
     MAX_F_TEMP,
+    MIN_VAC_C_TEMP,
+    MAX_VAC_C_TEMP,
+    MIN_VAC_F_TEMP,
+    MAX_VAC_F_TEMP,
     OperatingMode,
     PowerState,
 )
@@ -84,7 +88,7 @@ class ClivetWaterHeaterEntity(CoordinatorEntity, WaterHeaterEntity):
     _attr_min_temp: float = MIN_C_TEMP
     _attr_operation_list: list[str] | None = SUPPORTED_OPE_LIST
     _attr_precision: float = PRECISION_TENTHS
-    _attr_state: None = STATE_HEAT_PUMP
+    _attr_state: None = STATE_ON
     _attr_supported_features: WaterHeaterEntityFeature = WaterHeaterEntityFeature(WaterHeaterEntityFeature.TARGET_TEMPERATURE | 
                                                                                 WaterHeaterEntityFeature.OPERATION_MODE |
                                                                                 WaterHeaterEntityFeature.AWAY_MODE |
@@ -107,18 +111,20 @@ class ClivetWaterHeaterEntity(CoordinatorEntity, WaterHeaterEntity):
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-water-heater"
         self._attr_current_temperature = self._device.current_temp
         self._attr_target_temperature = self._device.target_temp
+        if self._device.operation_mode == OperatingMode.VACATION:
+            self._attr_is_away_mode_on = True
         self._attr_current_operation = OPE_TRANSLATION[int(self._device.operation_mode)]
 
     async def async_set_temperature(self,
                                     **kwargs,
                                     ) -> None:
-        """ set new target temperature """
+        """ Set new target temperature """
         _LOGGER.debug("[Water Heater] set target temp - kwargs: {}".format(kwargs))
         if "temperature" in kwargs:
-            target_temp = kwargs.get("temperature")
-            ret = await self._device.async_set_target_temp(temp = target_temp)
-            if not ret:
-                _LOGGER.error("[Water Heater] Error sending target temperature: {}".format(target_temp))
+            _target_temp = kwargs.get("temperature")
+            _ret = await self._device.async_set_target_temp(temp = target_temp)
+            if not _ret:
+                _LOGGER.error("[Water Heater] Error sending target temperature: {}".format(_target_temp))
         else:
             _LOGGER.exception("[Water Heater] Target temperature not defined")
         await self.coordinator.async_request_refresh()
@@ -128,43 +134,62 @@ class ClivetWaterHeaterEntity(CoordinatorEntity, WaterHeaterEntity):
                             ) -> None:
         """ Turn the entity on """
         _LOGGER.debug("[Water Heater] turn on - kwargs: {}".format(kwargs))
-        ret = await self._device.async_set_on()
-        if not ret:
+        _ret = await self._device.async_set_on()
+        if not _ret:
             _LOGGER.exception("[Water Heater] Error setting on")
+        self.__attr_state = STATE_ON
         await self.coordinator.async_request_refresh()
         
     async def async_turn_off(self, 
-                             **kwargs: Any
+                             **kwargs: Any,
                             ) -> None:
         """ Turn the entity off """
         _LOGGER.debug("[Water Heater] turn off - kwargs: {}".format(kwargs))
         ret = await self._device.async_set_off()
         if not ret:
             _LOGGER.exception("[Water Heater] Error setting off")
+        self.__attr_state = STATE_OFF
         await self.coordinator.async_request_refresh()
 
-    async def async_set_operation_mode(self, 
-                                        operation_mode: str
+    async def async_set_operation_mode(self,
+                                        operation_mode: str,
                                         ) -> None:
-        """Set new target operation mode."""
-        _LOGGER.debug("[Water Heater] set operating mode: {}".format(operation_mode))
+        """ Set new target operation mode. """
         for k,v in OPE_TRANSLATION.items():
             if v == operation_mode:
                 opt = k
                 break
-        ret = await self._device.async_set_setting_mode(mode = OperatingMode(opt))
-        if not ret:
-            _LOGGER.exception("Error setting new operating mode")
+        _LOGGER.debug("[Water Heater] new setting mode: {} ({})".format(OperatingMode(opt), operation_mode))
+        _ret = await self._device.async_set_setting_mode(mode = OperatingMode(opt))
+        if not _ret:
+            _LOGGER.exception("Error setting new operating mode ({})".format(OperatingMode(opt)))
+        elif OperatingMode(opt) != OperatingMode.VACATION:
+            # turn off away mode if a new setting is done
+            self._attr_is_away_mode_on = False
+            self._attr_max_temp = MAX_C_TEMP
+            self._attr_min_temp = MIN_C_TEMP
         await self.coordinator.async_request_refresh()
 
     async def async_turn_away_mode_on(self) -> None:
-        """Turn away (vacation) mode on."""
+        """ Turn away (vacation) mode on. """
         _LOGGER.debug("[Water Heater] Turn away (vacation) mode on")
+        _ret = await self._device.async_set_setting_mode(mode = OperatingMode.VACATION)
+        if not _ret:
+            _LOGGER.exception("Error setting operating mode: vacation ON")
+        self._attr_is_away_mode_on = True
+        self._attr_max_temp = MAX_VAC_C_TEMP
+        self._attr_min_temp = MIN_VAC_C_TEMP
         await self.coordinator.async_request_refresh()
 
     async def async_turn_away_mode_off(self) -> None:
-        """Turn away (vacation) mode off."""
+        """ Turn away (vacation) mode off. """
         _LOGGER.debug("[Water Heater] Turn away (vacation) mode off")
+        _ret = await self._device.async_set_setting_mode(mode = OperatingMode.HYBRID)
+        if not _ret:
+            _LOGGER.exception("Error setting operating mode: vacation OFF")
+        self._attr_is_away_mode_on = False
+        self._attr_max_temp = MAX_C_TEMP
+        self._attr_min_temp = MIN_C_TEMP
         await self.coordinator.async_request_refresh()
 
     @property
@@ -193,7 +218,14 @@ class ClivetWaterHeaterEntity(CoordinatorEntity, WaterHeaterEntity):
                 self.coordinator.data['power']))
             self._attr_current_temperature = self.coordinator.data['cur_temp']
             self._attr_target_temperature = self.coordinator.data['target_temp']
-            self._attr_current_operation = OPE_TRANSLATION[int(self.coordinator.data['ope'])]
+            
+            # Operation mode
+            if self.coordinator.data['ope'] == OperatingMode.VACATION:
+                self._attr_is_away_mode_on = True
+                self._attr_current_operation = "Vacation"
+            else:
+                self._attr_current_operation = OPE_TRANSLATION[int(self.coordinator.data['ope'])]
+            # Power state
             if self.coordinator.data['power'] == PowerState.STATE_OFF:
                 self.__attr_state = STATE_OFF
             elif self.coordinator.data['power'] == PowerState.STATE_ON:

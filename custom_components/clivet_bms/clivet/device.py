@@ -15,105 +15,6 @@ _LOGGER = log.getLogger(__name__)
 class WaterHeater:
     ''' WaterHeater Device class '''
 
-    #_rtu_port:str = ""
-    #_rtu_addr:int = const.DEFAULT_ADDR
-    #_rtu_baudrate:int = const.DEFAULT_BAUDRATE
-    #_rtu_parity:str = const.DEFAULT_PARITY
-    #_rtu_bytesize:int = const.DEFAULT_BYTESIZE
-    #_rtu_stopbits:int = const.DEFAULT_STOPBITS
-#
-    #_tcp_port:int = const.DEFAULT_TCP_PORT
-    #_tcp_addr:str = const.DEFAULT_TCP_ADDR
-    #_tcp_modbus:int = const.DEFAULT_ADDR
-    #_tcp_retries:int = const.DEFAULT_TCP_RETRIES
-    #_tcp_reco_delay_min:float = const.DEFAULT_TCP_RECO_DELAY
-    #_tcp_reco_delay_max:float = const.DEFAULT_TCP_RECO_DELAY_MAX
-#
-    #def __init__(self, 
-    #            mode:str = "",
-    #            name:str = "",
-    #            timeout:int = 1,
-    #            debug:bool = False, 
-    #            choice:str = "",
-    #            **kwargs
-    #            ) -> None:
-    #    ''' Class constructor '''
-    #    self._mode = mode
-    #    self._name = name
-    #    self._debug = debug
-    #    self._timeout = timeout
-    #    self._choice = choice
-    #    self.__dict__.update(kwargs)
-    #    if self._mode == "Modbus RTU":
-    #        self._rtu_port = kwargs.get('port', '')
-    #        self._rtu_addr = kwargs.get('addr', const.DEFAULT_ADDR)
-    #        self._rtu_baudrate = kwargs.get('baudrate', const.DEFAULT_BAUDRATE)
-    #        self._rtu_parity = kwargs.get('parity', const.DEFAULT_PARITY)
-    #        self._rtu_bytesize = kwargs.get('bytesize', const.DEFAULT_BYTESIZE)
-    #        self._rtu_stopbits = kwargs.get('stopbits', const.DEFAULT_STOPBITS)
-    #        self._client = Operations(mode=self._mode,
-    #                                    timeout=self._timeout,
-    #                                    debug=self._debug,
-    #                                    port=self._rtu_port,
-    #                                    addr=self._rtu_addr,
-    #                                    baudrate=self._rtu_baudrate,
-    #                                    parity=self._rtu_parity,
-    #                                    bytesize=self._rtu_bytesize,
-    #                                    stopbits=self._rtu_stopbits)
-    #    elif self._mode == "Modbus TCP":
-    #        self._tcp_port = kwargs.get('port', const.DEFAULT_TCP_PORT)
-    #        self._tcp_addr = kwargs.get('addr', const.DEFAULT_TCP_ADDR)
-    #        self._tcp_modbus = kwargs.get('modbus', const.DEFAULT_ADDR)
-    #        self._tcp_retries = kwargs.get('retries', const.DEFAULT_TCP_RETRIES)
-    #        self._tcp_reco_delay_min = kwargs.get('reco_delay_min', const.DEFAULT_TCP_RECO_DELAY)
-    #        self._tcp_reco_delay_max = kwargs.get('reco_delay_max', const.DEFAULT_TCP_RECO_DELAY_MAX)
-    #        self._client = Operations(mode=self._mode,
-    #                                    timeout=self._timeout,
-    #                                    debug=self._debug,
-    #                                    addr=self._tcp_addr,
-    #                                    port=self._tcp_port,
-    #                                    modbus=self._tcp_modbus,
-    #                                    retries=self._tcp_retries,
-    #                                    reco_delay_min=self._tcp_reco_delay_min,
-    #                                    reco_delay_max=self._tcp_reco_delay_max)
-    #    else:
-    #        raise InitialisationError('unknown mode ({})'.format(self._mode))
-    #    self._power = const.PowerState.STATE_OFF
-    #    self._target_temp:float = 0.0
-    #    self._current_temp:float = 0.0
-    #    self._model = const.Model.MODEL_190
-    #    self._firm_vers = 1
-    #    self._wire_controller_vers = 1
-    #    self._unit_mode = const.UnitMode.CELCIUS
-    #    self._desinfect = const.DisinfectFunc.OFF
-    #    self._remoter_mode = const.RemoterMode.OFF
-    #    self._remoter_signal = const.RemoterSignal.PANEL_CANNOT_WORK
-    #    self._sg = const.SGCmd.OFF
-    #    self._evu = const.EVUCmd.OFF
-    #    self._solar = const.SolarSignal.SOLAR_PANEL_OFF
-    #    self._operation_mode = const.OperatingMode.INVALID
-    #    self._min_temp_ts:float = 0.0
-    #    self._max_temp_ts:float = 0.0
-    #    self._temp_t5l:float = 0.0
-    #    self._temp_t5u:float = 0.0
-    #    self._temp_t3:float = 0.0
-    #    self._temp_t4:float = 0.0
-    #    self._temp_tp:float = 0.0
-    #    self._temp_th:float = 0.0
-    #    self._temp_tx:float = 0.0
-    #    self._compressor_time:int = 0
-    #    self._compressor_current:int = 0
-    #    self._wifi_status = const.WifiStatus.NOT_CONNECT
-    #    self._defrost = const.DefrostMode.OFF
-    #    self._solar_kit = const.SolarKitMode.OFF
-    #    self._vacation = const.VacationMode.NOT_ACTIVE
-    #    self._alarm = const.AlarmStatus.OFF
-    #    self._solar_pump = const.SolarPanelWaterPumpStatus.OFF
-    #    self._compressor = const.CompressorStatus.OFF
-    #    self._elecheater = const.ElectricHeaterStatus.OFF
-    #    self._fourwayvalve = const.FourWayValveStatus.OFF
-    #    self._fan_speed:str = "OFF"
-
     def __init__(self, 
                     mode: str = "",
                     name: str = "",
@@ -371,25 +272,6 @@ class WaterHeater:
         ''' return last error code '''
         return self._err_code
 
-    async def async_get_command_func(self) -> (bool, dict):
-        ''' retreive command functions '''
-        _cmd:dict = {}
-        _ret:bool = False
-        _ret, _cmd = await self._client.async_get_command_func()
-        if not _ret:
-            _LOGGER.error('Error retreiving command functions')
-            return _ret, {}
-
-        self._unit_mode = _cmd['unit']
-        self._desinfect = _cmd['desinfect']
-        self._remoter_mode = _cmd['remoterMode']
-        self._remoter_signal = _cmd['remoterSignal']
-        self._sg = _cmd['sg']
-        self._evu = _cmd['evu']
-        self._solar = _cmd['solar']
-
-        return _ret, _cmd
-
     async def async_set_unit(self, unit:str) -> bool:
         ''' Set unit mode '''
         _ret:bool = False
@@ -515,23 +397,6 @@ class WaterHeater:
         ''' return vacation mode '''
         return self._vacation
 
-    async def async_get_misc(self) -> (bool, dict):
-        ''' Get auxiliary status '''
-        misc_dict:dict = {}
-        ret, misc_dict = await self._client.async_get_misc()
-        if not ret:
-            _LOGGER.error("Error retreiving misc registers")
-            return False, misc_dict
-        self._model = misc_dict['model']
-        self._firm_vers = misc_dict['pcb_firm']
-        self._wire_controller_vers = misc_dict['wire_firm']
-        self._compressor_time = misc_dict['comp_time']
-        self._wifi_status = misc_dict['wifi']
-        self._defrost = misc_dict['defrost']
-        self._solar_kit = misc_dict['solar_kit']
-        self._vacation = misc_dict['vacation']
-        return True, misc_dict
-
     @property
     def alarm(self) -> const.AlarmStatus:
         ''' return alarm '''
@@ -562,33 +427,6 @@ class WaterHeater:
         ''' return fan speed '''
         return self._fan_speed
 
-    async def async_get_load_output(self) -> (bool, dict):
-        ''' Get load output '''
-        load_dict:dict = {}
-        ret, load_dict = await self._client.async_get_load_output()
-        if not ret:
-            _LOGGER.error("Error retreiving load output register")
-            return False, load_dict
-
-        self._compressor = load_dict['compressor']
-        self._elecheater = load_dict['elecHeater']
-        self._fourwayvalve = load_dict['valve']
-        if load_dict['fanLow'] == const.FanSpeedLowStatus.ON:
-            self._fan_speed = 'LOW'
-            load_dict['fan_speed'] = 'LOW'
-        elif load_dict['fanMed'] == const.FanSpeedMediumStatus.ON:
-            self._fan_speed = 'MEDIUM'
-            load_dict['fan_speed'] = 'MEDIUM'
-        elif load_dict['fanHigh'] == const.FanSpeedHighStatus.ON:
-            self._fan_speed = 'HIGH'
-            load_dict['fan_speed'] = 'HIGH'
-        else:
-            self._fan_speed = 'OFF'
-            load_dict['fan_speed'] = 'OFF'
-        self._solar_pump = load_dict['solarPump']
-        self._alarm = load_dict['alarm']
-        return True, load_dict
-
     @property
     def current_temp(self) -> float:
         ''' Get current temp '''
@@ -610,16 +448,6 @@ class WaterHeater:
     def target_temp(self) -> float:
         ''' Get target temp Ts '''
         return self._target_temp
-
-    async def async_get_target_temp(self) -> (bool, float):
-        """ get target temp Ts """
-        ret, self._target_temp = await self._client.async_get_target_temp(unit = self._unit_mode)
-        if not ret:
-            _LOGGER.error("Error reading target temp")
-            return ret, 0.0
-
-        _LOGGER.debug("[GET TARGET TEMP] Temp:{} (Unit Mode: {})".format(self._target_temp, self._unit_mode))
-        return ret, self._target_temp
 
     async def async_set_target_temp(self,
                                     temp:float,
@@ -661,14 +489,6 @@ class WaterHeater:
         """ get operation mode """
         return self._operation_mode
 
-    async def async_get_operation_mode(self) -> (bool, const.OperatingMode):
-        """ get operation mode """
-        ret, self._operation_mode = await self._client.async_get_operating_mode()
-        if not ret:
-            _LOGGER.error("Error retreiving operation mode")
-            return False, self._operation_mode
-        return True, self._operation_mode
-
     async def async_set_setting_mode(self,
                                     mode:const.OperatingMode,
                                     ) -> bool:
@@ -685,36 +505,10 @@ class WaterHeater:
         """ return minimum of Ts """
         return self._min_temp_ts
 
-    async def async_get_min_temp_ts(self) -> (bool, float):
-        """ get minimum of Ts """
-        ret, self._min_temp_ts = await self._client.async_get_min_ts_temp(unit = self._unit_mode)
-        if not ret:
-            _LOGGER.error("Error retreiving minimum temperature of Ts")
-            return False, 0.0
-        _LOGGER.debug("[GET MIN TEMP TS] val: {}".format(self._min_temp_ts))
-        return True, self._min_temp_ts
-
     @property
     def max_temp_ts(self) -> float:
         """ return maximum of Ts """
         return self._max_temp_ts
-
-    async def async_get_max_temp_ts(self) -> (bool, float):
-        """ get maximum of Ts """
-        ret, self._max_temp_ts = await self._client.async_get_max_ts_temp(unit = self._unit_mode)
-        if not ret:
-            _LOGGER.error("Error retreiving maximum temperature of Ts")
-            return False, 0.0
-        _LOGGER.debug("[GET MAX TEMP TS] val: {}".format(self._max_temp_ts))
-        return True, self._max_temp_ts
-
-    async def async_get_min_max_temps_ts(self) -> (bool, float, float):
-        """ get minimum of Ts """
-        ret, self._min_temp_ts, self._max_temp_ts = await self._client.async_get_min_max_ts_temps()
-        if not ret:
-            _LOGGER.error("Error retreiving minimum and maximum temperatures of Ts")
-            return False, 0.0, 0.0
-        return True, self._min_temp_ts, self._max_temp_ts
 
     @property
     def temp_t5u(self) -> float:
@@ -746,49 +540,15 @@ class WaterHeater:
         """ return suction temperature """
         return self._temp_th
 
-    async def async_get_temps(self) -> (bool, dict):
-        """ get temperatures T5U, T5L, T3, T4, TP and TH """
-        temps:dict = {}
-        ret, temps = await self._client.async_get_temps(unit = self._unit_mode)
-        if not ret:
-            _LOGGER.error("Error retreiving temps")
-            return False, {}
-        _LOGGER.debug("[GET TEMPS] vals:{}".format(temps))
-        self._temp_t5u = temps['T5U']
-        self._temp_t5l = temps['T5L']
-        self._temp_t3 = temps['T3']
-        self._temp_t4 = temps['T4']
-        self._temp_tp = temps['TP']
-        self._temp_th = temps['TH']
-        return True, temps
-
     @property
     def temp_tx(self) -> float:
         """ return display temperature """
         return self._temp_th
 
-    async def async_get_tx_temp(self) -> (bool, float):
-        """ get display temperture """
-        ret, self._temp_tx = await self._client.async_get_display_temp(unit = self._unit_mode)
-        if not ret:
-            _LOGGER.error("Error retreiving display temperature")
-            return False, 0.0
-        _LOGGER.debug("[GET DISPLAY TEMP] val: {}".format(self._temp_tx))
-        return True, self._temp_tx
-
     @property
     def comp_current(self) -> int:
         """ return compressor current """
         return self._compressor_current
-
-    async def async_get_compressor_current(self) -> (bool, int):
-        """ get compressor current """
-        ret, self._compressor_current = await self._client.async_get_compressor_current()
-        if not ret:
-            _LOGGER.error("Error retreiving compressor current")
-            return False, 0
-        _LOGGER.debug("[GET COMP CURRENT] val: {}".format(self._compressor_current))
-        return True, self._compressor_current
 
     def __repr__(self) -> str:
         ''' repr method '''

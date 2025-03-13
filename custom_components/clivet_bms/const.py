@@ -54,13 +54,14 @@ OPE_VACATION = "Vacation"
 
 OPE_TRANSLATION = {
     int(OperatingMode.INVALID): OPE_INVALID,
-    int(OperatingMode.HYBRID): STATE_PERFORMANCE,
+    int(OperatingMode.HYBRID): STATE_HEAT_PUMP,
     int(OperatingMode.E_HEATER): STATE_ELECTRIC,
     int(OperatingMode.VACATION): OPE_VACATION,
+    int(OperatingMode.OFF): STATE_OFF,
 }
 
 SUPPORTED_OPE_LIST = [
-    STATE_PERFORMANCE,
+    STATE_HEAT_PUMP,
     STATE_ELECTRIC,
 ]
 

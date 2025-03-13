@@ -43,11 +43,19 @@ class SettingMode(Enum):
 # Setting the temperature Ts
 REG_SETTING_TEMP_TS = 2
 
+# Vacation range of temperature in Celcius
+MIN_VAC_C_TEMP = 15.0
+MAX_VAC_C_TEMP = 15.0
+
+# Vacation range of temperature in Fahrenheit
+MIN_VAC_F_TEMP = 59.0
+MAX_VAC_F_TEMP = 59.0
+
 # Range of temperature in Celcius
 MIN_C_TEMP = 38
 MAX_C_TEMP = 70
 
-# Range of temperature in fahrenheit
+# Range of temperature in Fahrenheit
 MIN_F_TEMP = 100
 MAX_F_TEMP = 158
 
@@ -113,10 +121,15 @@ REG_MINUTE = 5
 REG_OPERATING_MODE = 100
 
 class OperatingMode(Enum):
+    UNKNOWN_0 = 0
     INVALID = 1
     HYBRID = 2
     E_HEATER = 3
     VACATION = 4
+    UNKNOWN_5 = 5
+    UNKNOWN_6 = 6
+    UNKNOWN_7 = 7
+    OFF = 8
 
     def __int__(self):
         return self.value
