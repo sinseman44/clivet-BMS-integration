@@ -100,7 +100,7 @@ Example : ttyUSB0 is the node added for the device. The absolute path of this no
 
 ![HA_hardware](png/HA_hardware_tty.png)
 
-# Clivet BMS Installation
+## Clivet BMS Installation
 
 The first page after installing the component is the choice of Modbus communication.
 * Modbus TCP (for wireless system)
