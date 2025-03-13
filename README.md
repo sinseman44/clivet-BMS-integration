@@ -85,6 +85,48 @@ _In IEEE 802.11 (Wi-Fi) terminology, a station (abbreviated as STA) is a device 
 * Connector CN26 Modbus X to RS485/Wifi Device B-
 * Connector CN26 Modbus E to RS485/Wifi Device GND
 
+## Installation
+
+Install using HACS In HACS go to the three dots int the upper right corner choose add custom repository and add https://github.com/sinseman44/clivet-BMS-Integration to the list.<br />
+Install manually Clone or copy this repository and copy the folder `custom_components/clivet_bms` into `/custom_components/clivet_bms`.<br />
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=sinseman44&repository=clivet-BMS-Integration&category=integration)
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=clivet_bms)
+
+## Home Assistant RS485/USB dongle recognition
+
+After plugging the USB dongle into the system, check that among the tty, it's recognized by Home Assistant.<br />
+Example : ttyUSB0 is the node added for the device. The absolute path of this node (eg: /dev/ttyUSB0) will be used in the component configuration.<br />
+
+![HA_hardware](png/HA_hardware_tty.png)
+
+# Clivet BMS Installation
+
+The first page after installing the component is the choice of Modbus communication.
+* Modbus TCP (for wireless system)
+* Modbus RTU (for wired system)
+
+![HA_choice](png/config_comm.png)
+
+Depending on the choice made, the next step is the Modbus RTU configuration or the Modbus TCP configuration.<br />
+
+## Clivet RTU Installation
+
+All serial fields are filled with default values defined by Clivet.<br />
+Adapt the fields according to your own configuration.<br />
+
+![HA_rtu_config](png/config_rtu.png)
+
+> [!NOTE]
+> Each control unit has a specific address (default 1). Possible addresses are 1 to 247.
+
+## Clivet TCP Installation
+
+All fields are filled with default values.<br />
+Adapt the fields according to your own configuration.<br />
+
+![HA_tcp_config](png/config_tcp.png)
+
 # Features
 
 - Integrates local API to read/write Modbus clivet registers
