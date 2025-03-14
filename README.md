@@ -64,6 +64,7 @@ _In IEEE 802.11 (Wi-Fi) terminology, a station (abbreviated as STA) is a device 
 * A clivet water heater system.
 * Enabling Modbus communication.
 * A __XHB2.54-3Y__ connector for the Modbus connector on the clivet motherboard.
+* A __120 Ohm__ resistor for Modbus end terminaison.
 
 ![connector](png/XHB2_54-3Y.png)
 
@@ -78,7 +79,7 @@ _In IEEE 802.11 (Wi-Fi) terminology, a station (abbreviated as STA) is a device 
 * Connector CN26 Modbus E to USB dongle GND
 
 > [!NOTE]
-> A 120 Ohm resistor, essential for the proper functioning of a RS485 Modbus serial line, allows the line to be closed, thus ensuring good communication, even with long bus cable lengths.
+> A 120 Ohm resistor (between A+ and B-), essential for the proper functioning of a RS485 Modbus serial line, allows the line to be closed, thus ensuring good communication, even with long bus cable lengths.
 
 ### with clivet main board and RS485/Wifi Device
 
@@ -89,7 +90,7 @@ _In IEEE 802.11 (Wi-Fi) terminology, a station (abbreviated as STA) is a device 
 * Connector CN26 Modbus E to RS485/Wifi Device GND
 
 > [!NOTE]
-> A 120 Ohm resistor, essential for the proper functioning of a RS485 Modbus serial line, allows the line to be closed, thus ensuring good communication, even with long bus cable lengths.
+> A 120 Ohm resistor (between A+ and B-), essential for the proper functioning of a RS485 Modbus serial line, allows the line to be closed, thus ensuring good communication, even with long bus cable lengths.
 
 ## Installation
 
