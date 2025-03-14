@@ -77,6 +77,9 @@ _In IEEE 802.11 (Wi-Fi) terminology, a station (abbreviated as STA) is a device 
 * Connector CN26 Modbus X to USB dongle B-
 * Connector CN26 Modbus E to USB dongle GND
 
+> [!NOTE]
+> A 120 Ohm resistor, essential for the proper functioning of a RS485 Modbus serial line, allows the line to be closed, thus ensuring good communication, even with long bus cable lengths.
+
 ### with clivet main board and RS485/Wifi Device
 
 ![Schematic2](png/schematics_wireless.png)
@@ -84,6 +87,9 @@ _In IEEE 802.11 (Wi-Fi) terminology, a station (abbreviated as STA) is a device 
 * Connector CN26 Modbus Y to RS485/Wifi Device A+
 * Connector CN26 Modbus X to RS485/Wifi Device B-
 * Connector CN26 Modbus E to RS485/Wifi Device GND
+
+> [!NOTE]
+> A 120 Ohm resistor, essential for the proper functioning of a RS485 Modbus serial line, allows the line to be closed, thus ensuring good communication, even with long bus cable lengths.
 
 ## Installation
 
