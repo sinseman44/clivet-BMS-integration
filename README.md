@@ -127,6 +127,16 @@ Adapt the fields according to your own configuration.<br />
 
 ![HA_tcp_config](png/config_tcp.png)
 
+## Calculation of the current temperature 
+
+the current temperature is the result of 2 temperature sensors present in the tank (Water temperature in lower position "T5L" and Water temperature in upper position "T5U").
+This value can be calculated in 3 different ways :
+- The maximum between the 2 temperature sensors (default use by the unit display)
+- The minimum between the 2 temperature sensors
+- The average between the 2 temperature sensors
+
+![HA_temp_conf](png/config_temp_read.png)
+
 # Features
 
 - Integrates local API to read/write Modbus clivet registers
@@ -141,12 +151,6 @@ The default heat source is the heat pump. If the outdoor temperature is outside 
 if the outdoor temperature returns to the operating range of the heat pump, the electrical resistance deactivates and the heat pump is automatically reactivated.
 
 ![Water_heater_entity](png/Water_Heater_entity.png)
-
-the current temperature is the result of 2 temperature sensors present in the tank (Water temperature in lower position and Water temperature in upper position).
-This value can be calculated in 3 different ways :
-- The maximum between the 2 temperature sensors (default use by the unit display)
-- The minimum between the 2 temperature sensors
-- The average between the 2 temperature sensors
 
 ### Vacation Mode
 When the "VACATION" button is pressed (mode AWAY), the appliance maintains the water at 15°C during the specified period of absence. This saves energy.
