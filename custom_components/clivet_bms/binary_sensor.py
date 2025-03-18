@@ -6,6 +6,7 @@ import logging
 from homeassistant.core import HomeAssistant, callback, Event, State
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.entity import EntityCategory
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.components.binary_sensor import (
     BinarySensorEntity,
@@ -67,6 +68,7 @@ class WifiSensor(CoordinatorEntity, BinarySensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a binary sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "wifi"
     _attr_device_class: BinarySensorDeviceClass | None = BinarySensorDeviceClass.CONNECTIVITY
     _attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
     _attr_is_on: bool | None = False
@@ -79,7 +81,7 @@ class WifiSensor(CoordinatorEntity, BinarySensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Wifi connection status"
+        #self._attr_name = f"Wifi connection status"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-wifi-status-binary-sensor"
@@ -88,6 +90,11 @@ class WifiSensor(CoordinatorEntity, BinarySensorEntity):
             self._attr_state = STATE_ON
         else:
             self._attr_state = STATE_OFF
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -111,6 +118,7 @@ class DefrostSensor(CoordinatorEntity, BinarySensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a binary sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "defrost"
     _attr_device_class: BinarySensorDeviceClass | None = BinarySensorDeviceClass.RUNNING
     _attr_is_on: bool | None = False
     _attr_state: None = STATE_OFF
@@ -122,7 +130,7 @@ class DefrostSensor(CoordinatorEntity, BinarySensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Defrost status"
+        #self._attr_name = f"Defrost status"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-defrost-status-binary-sensor"
@@ -131,6 +139,11 @@ class DefrostSensor(CoordinatorEntity, BinarySensorEntity):
             self._attr_state = STATE_ON
         else:
             self._attr_state = STATE_OFF
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -154,6 +167,7 @@ class SolarSensor(CoordinatorEntity, BinarySensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a binary sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "solar_kit"
     _attr_device_class: BinarySensorDeviceClass | None = BinarySensorDeviceClass.RUNNING
     _attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
     _attr_is_on: bool | None = False
@@ -166,7 +180,7 @@ class SolarSensor(CoordinatorEntity, BinarySensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Solar kit status"
+        #self._attr_name = f"Solar kit status"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-solar-kit-status-binary-sensor"
@@ -175,6 +189,11 @@ class SolarSensor(CoordinatorEntity, BinarySensorEntity):
             self._attr_state = STATE_ON
         else:
             self._attr_state = STATE_OFF
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -198,6 +217,7 @@ class AlarmSensor(CoordinatorEntity, BinarySensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a binary sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "alarm"
     _attr_device_class: BinarySensorDeviceClass | None = BinarySensorDeviceClass.RUNNING
     _attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
     _attr_is_on: bool | None = False
@@ -210,7 +230,7 @@ class AlarmSensor(CoordinatorEntity, BinarySensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Alarm"
+        #self._attr_name = f"Alarm"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-alarm-binary-sensor"
@@ -219,6 +239,11 @@ class AlarmSensor(CoordinatorEntity, BinarySensorEntity):
             self._attr_state = STATE_ON
         else:
             self._attr_state = STATE_OFF
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -242,6 +267,7 @@ class CompressorSensor(CoordinatorEntity, BinarySensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a binary sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "compressor"
     _attr_device_class: BinarySensorDeviceClass | None = BinarySensorDeviceClass.RUNNING
     _attr_is_on: bool | None = False
     _attr_state: None = STATE_OFF
@@ -253,7 +279,7 @@ class CompressorSensor(CoordinatorEntity, BinarySensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Compressor"
+        #self._attr_name = f"Compressor"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-compressor-binary-sensor"
@@ -262,6 +288,11 @@ class CompressorSensor(CoordinatorEntity, BinarySensorEntity):
             self._attr_state = STATE_ON
         else:
             self._attr_state = STATE_OFF
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -285,6 +316,7 @@ class ElectricHeaterSensor(CoordinatorEntity, BinarySensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a binary sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "elec_heater"
     _attr_device_class: BinarySensorDeviceClass | None = BinarySensorDeviceClass.RUNNING
     _attr_is_on: bool | None = False
     _attr_state: None = STATE_OFF
@@ -296,7 +328,7 @@ class ElectricHeaterSensor(CoordinatorEntity, BinarySensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Electric Heater"
+        #self._attr_name = f"Electric Heater"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-electric-heater-binary-sensor"
@@ -305,6 +337,11 @@ class ElectricHeaterSensor(CoordinatorEntity, BinarySensorEntity):
             self._attr_state = STATE_ON
         else:
             self._attr_state = STATE_OFF
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -328,6 +365,7 @@ class FourWayValveSensor(CoordinatorEntity, BinarySensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a binary sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "valve"
     _attr_device_class: BinarySensorDeviceClass | None = BinarySensorDeviceClass.RUNNING
     _attr_is_on: bool | None = False
     _attr_state: None = STATE_OFF
@@ -339,7 +377,7 @@ class FourWayValveSensor(CoordinatorEntity, BinarySensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"4 Way valve"
+        #self._attr_name = f"4 Way valve"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-4-way-valve-binary-sensor"
@@ -348,6 +386,11 @@ class FourWayValveSensor(CoordinatorEntity, BinarySensorEntity):
             self._attr_state = STATE_ON
         else:
             self._attr_state = STATE_OFF
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -371,6 +414,7 @@ class SolarPanelPumpSensor(CoordinatorEntity, BinarySensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a binary sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "solar_panel_pump"
     _attr_device_class: BinarySensorDeviceClass | None = BinarySensorDeviceClass.RUNNING
     _attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
     _attr_is_on: bool | None = False
@@ -383,7 +427,7 @@ class SolarPanelPumpSensor(CoordinatorEntity, BinarySensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Solar panel water pump"
+        #self._attr_name = f"Solar panel water pump"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-solar-pump-binary-sensor"
@@ -392,6 +436,11 @@ class SolarPanelPumpSensor(CoordinatorEntity, BinarySensorEntity):
             self._attr_state = STATE_ON
         else:
             self._attr_state = STATE_OFF
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:

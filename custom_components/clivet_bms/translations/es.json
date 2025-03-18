@@ -1,0 +1,150 @@
+{
+    "title": "Clivet BMS",
+    "config": {
+        "flow_title": "Configuración de Clivet BMS",
+        "step": {
+            "user": {
+                "title": "Modo de comunicación Modbus",
+                "description": "Seleccione el modo de comunicación según el tipo de conexión con el controlador Clivet",
+                "data": {
+                    "Mode": "Mode"
+                }
+            },
+            "rtu": {
+                "title": "Configuración del cliente Modbus RTU",
+                "description": "Información de inicio de sesión del dispositivo Clivet",
+                "data": {
+                    "Name": "Nombre del dispositivo",
+                    "Device": "Dispositivo de comunicación Modbus RS485",
+                    "Address": "Dirección del dispositivo",
+                    "Baudrate": "Velocidad Modbus",
+                    "Sizebyte": "Tamaño de los datos",
+                    "Parity": "Paridad",
+                    "Stopbits": "Número de bits de parada",
+                    "Timeout": "Tiempo de espera",
+                    "Debug": "Depuración"
+                }
+            },
+            "tcp": {
+                "title": "Configuración del cliente Modbus TCP",
+                "description": "Información de inicio de sesión del sistema Clivet",
+                "data": {
+                    "Name": "Nombre del dispositivo",
+                    "Modbus": "Dirección Modbus del dispositivo",
+                    "Address": "Dirección de comunicación",
+                    "Port": "Puerto de comunicación",
+                    "Retries": "Número de intentos de reconexión",
+                    "Reconnect_delay_min": "Tiempo mínimo de reconexión",
+                    "Reconnect_delay_max": "Tiempo máximo de reconexión",
+                    "Timeout": "Tiempo de espera",
+                    "Debug": "Depuración"
+                }
+            },
+            "temp": {
+                "title": "Visualización de la temperatura leída en la integración",
+                "description": "Hay dos sensores de temperatura presentes en las posiciones superior e inferior del tanque. ¿Qué método de lectura debo elegir?",
+                "data": {
+                    "Choice": "Elección"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "No se puede conectar al sistema Clivet"
+        }
+    },
+    "entity": {
+        "sensor": {
+            "water_temp_upper_pos": {
+                "name": "Temperatura del tanque en posición alta"
+            },
+            "water_temp_lower_pos": {
+                "name": "Temperatura del tanque en posición baja"
+            },
+            "t3_temp": {
+                "name": "Temperatura del condensador"
+            },
+            "t4_temp": {
+                "name": "Temperatura ambiente exterior"
+            },
+            "tp_temp": {
+                "name": "Temperatura de escape del compresor"
+            },
+            "th_temp": {
+                "name": "Temperatura de succión"
+            },
+            "tx_temp": {
+                "name": "Mostrar temperatura"
+            },
+            "comp_time": {
+                "name": "Tiempo de funcionamiento del compresor"
+            },
+            "model": {
+                "name": "Modelo"
+            },
+            "pcb_version": {
+                "name": "Versión del firmware de PCB"
+            },
+            "wire_version": {
+                "name": "Versión del firmware del controlador con cable"
+            },
+            "comp_current": {
+                "name": "Corriente del compresor"
+            },
+            "fan_speed": {
+                "name": "Velocidad del ventilador"
+            },
+            "err_code": {
+                "name": "Código de error"
+            }
+        },
+        "binary_sensor": {
+            "wifi": {
+                "name": "Estado de la conexión WiFi"
+            },
+            "defrost": {
+                "name": "Antihielo"
+            },
+            "solar_kit": {
+                "name": "Estado del kit solar"
+            },
+            "alarm": {
+                "name": "Alarma"
+            },
+            "compressor": {
+                "name": "Compresor"
+            },
+            "elec_heater": {
+                "name": "Resistencia eléctrica"
+            },
+            "valve": {
+                "name": "válvula de cuatro vías"
+            },
+            "solar_panel_pump": {
+                "name": "Bomba de agua solar"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Alimento"
+            },
+            "unit": {
+                "name": "Unidad de medida (°C/°F)"
+            },
+            "disinfect": {
+                "name": "Desinfectar"
+            },
+            "sg": {
+                "name": "Red inteligente"
+            },
+            "evu": {
+                "name": "Señal solar EVU"
+            },
+            "remoter": {
+                "name": "Remoto"
+            },
+            "modbus_debug": {
+                "name": "Depurar Modbus"
+            }
+        }
+    }
+}

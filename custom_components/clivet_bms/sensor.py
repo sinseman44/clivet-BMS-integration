@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from homeassistant.core import HomeAssistant, callback, Event, State
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.entity import EntityCategory
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.components.sensor import (
     SensorEntity,
@@ -148,9 +149,8 @@ class DiagT5USensor(CoordinatorEntity, SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
-    #_attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
+    _attr_translation_key:str = "water_temp_upper_pos"
     _attr_device_class: SensorDeviceClass | None = SensorDeviceClass.TEMPERATURE
-    #_attr_native_unit_of_measurement: str = UnitOfTemperature.CELSIUS
 
     def __init__(self,
                     coordinator: WaterHeaterCoordinator, # pylint: disable=unused-argument
@@ -159,7 +159,7 @@ class DiagT5USensor(CoordinatorEntity, SensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Water temp in upper position"
+        #self._attr_name = f"Water temp in upper position"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-water-temp-upper-sensor"
@@ -168,6 +168,11 @@ class DiagT5USensor(CoordinatorEntity, SensorEntity):
             self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
         elif self._device.unit_mode == UnitMode.FAHRENHEIT:
             self._attr_native_unit_of_measurement = UnitOfTemperature.FAHRENHEIT
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -187,9 +192,8 @@ class DiagT5LSensor(CoordinatorEntity, SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
-    #_attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
+    _attr_translation_key:str = "water_temp_lower_pos"
     _attr_device_class: SensorDeviceClass | None = SensorDeviceClass.TEMPERATURE
-    #_attr_native_unit_of_measurement: str = UnitOfTemperature.CELSIUS
 
     def __init__(self,
                     coordinator: WaterHeaterCoordinator, # pylint: disable=unused-argument
@@ -198,7 +202,7 @@ class DiagT5LSensor(CoordinatorEntity, SensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Water temp in lower position"
+        #self._attr_name = f"Water temp in lower position"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-water-temp-lower-sensor"
@@ -207,6 +211,11 @@ class DiagT5LSensor(CoordinatorEntity, SensorEntity):
             self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
         elif self._device.unit_mode == UnitMode.FAHRENHEIT:
             self._attr_native_unit_of_measurement = UnitOfTemperature.FAHRENHEIT
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -226,9 +235,8 @@ class DiagT3Sensor(CoordinatorEntity, SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
-    #_attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
+    _attr_translation_key:str = "t3_temp"
     _attr_device_class: SensorDeviceClass | None = SensorDeviceClass.TEMPERATURE
-    #_attr_native_unit_of_measurement: str = UnitOfTemperature.CELSIUS
 
     def __init__(self,
                     coordinator: WaterHeaterCoordinator, # pylint: disable=unused-argument
@@ -237,7 +245,7 @@ class DiagT3Sensor(CoordinatorEntity, SensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Condenser temperature"
+        #self._attr_name = f"Condenser temperature"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-condenser-temp-sensor"
@@ -246,6 +254,11 @@ class DiagT3Sensor(CoordinatorEntity, SensorEntity):
             self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
         elif self._device.unit_mode == UnitMode.FAHRENHEIT:
             self._attr_native_unit_of_measurement = UnitOfTemperature.FAHRENHEIT
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -265,9 +278,8 @@ class DiagT4Sensor(CoordinatorEntity, SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
-    #_attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
+    _attr_translation_key:str = "t4_temp"
     _attr_device_class: SensorDeviceClass | None = SensorDeviceClass.TEMPERATURE
-    #_attr_native_unit_of_measurement: str = UnitOfTemperature.CELSIUS
 
     def __init__(self,
                     coordinator: WaterHeaterCoordinator, # pylint: disable=unused-argument
@@ -276,7 +288,7 @@ class DiagT4Sensor(CoordinatorEntity, SensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Outdoor ambient temperature"
+        #self._attr_name = f"Outdoor ambient temperature"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-outdoor-ambient-temp-sensor"
@@ -285,6 +297,11 @@ class DiagT4Sensor(CoordinatorEntity, SensorEntity):
             self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
         elif self._device.unit_mode == UnitMode.FAHRENHEIT:
             self._attr_native_unit_of_measurement = UnitOfTemperature.FAHRENHEIT
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -304,9 +321,8 @@ class DiagTPSensor(CoordinatorEntity, SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
-    #_attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
+    _attr_translation_key:str = "tp_temp"
     _attr_device_class: SensorDeviceClass | None = SensorDeviceClass.TEMPERATURE
-    #_attr_native_unit_of_measurement: str = UnitOfTemperature.CELSIUS
 
     def __init__(self,
                     coordinator: WaterHeaterCoordinator, # pylint: disable=unused-argument
@@ -315,7 +331,7 @@ class DiagTPSensor(CoordinatorEntity, SensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Compressor exhaust temperature"
+        #self._attr_name = f"Compressor exhaust temperature"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-compressor-exhaust-temp-sensor"
@@ -324,6 +340,11 @@ class DiagTPSensor(CoordinatorEntity, SensorEntity):
             self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
         elif self._device.unit_mode == UnitMode.FAHRENHEIT:
             self._attr_native_unit_of_measurement = UnitOfTemperature.FAHRENHEIT
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -343,9 +364,8 @@ class DiagTHSensor(CoordinatorEntity, SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
-    #_attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
+    _attr_translation_key:str = "th_temp"
     _attr_device_class: SensorDeviceClass | None = SensorDeviceClass.TEMPERATURE
-    #_attr_native_unit_of_measurement: str = UnitOfTemperature.CELSIUS
 
     def __init__(self,
                     coordinator: WaterHeaterCoordinator, # pylint: disable=unused-argument
@@ -354,7 +374,7 @@ class DiagTHSensor(CoordinatorEntity, SensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Suction temperature"
+        #self._attr_name = f"Suction temperature"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-suction-temp-sensor"
@@ -363,6 +383,11 @@ class DiagTHSensor(CoordinatorEntity, SensorEntity):
             self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
         elif self._device.unit_mode == UnitMode.FAHRENHEIT:
             self._attr_native_unit_of_measurement = UnitOfTemperature.FAHRENHEIT
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -382,9 +407,8 @@ class DiagTXSensor(CoordinatorEntity, SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
-    #_attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
+    _attr_translation_key:str = "tx_temp"
     _attr_device_class: SensorDeviceClass | None = SensorDeviceClass.TEMPERATURE
-    #_attr_native_unit_of_measurement: str = UnitOfTemperature.CELSIUS
 
     def __init__(self,
                     coordinator: WaterHeaterCoordinator, # pylint: disable=unused-argument
@@ -393,7 +417,7 @@ class DiagTXSensor(CoordinatorEntity, SensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Display temperature"
+        #self._attr_name = f"Display temperature"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-display-temp-sensor"
@@ -402,6 +426,11 @@ class DiagTXSensor(CoordinatorEntity, SensorEntity):
             self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
         elif self._device.unit_mode == UnitMode.FAHRENHEIT:
             self._attr_native_unit_of_measurement = UnitOfTemperature.FAHRENHEIT
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -421,7 +450,7 @@ class DiagCompTimeSensor(CoordinatorEntity, SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
-    #_attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
+    _attr_translation_key:str = "comp_time"
     _attr_device_class: SensorDeviceClass | None = SensorDeviceClass.DURATION
     _attr_native_unit_of_measurement: str = UnitOfTime.SECONDS
 
@@ -432,11 +461,16 @@ class DiagCompTimeSensor(CoordinatorEntity, SensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Compressor running time"
+        #self._attr_name = f"Compressor running time"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-compressor-running-time-sensor"
         self._attr_native_value = "{}".format(self._device.compressor_time)
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -456,6 +490,7 @@ class DiagModelSensor(SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "model"
     _attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
 
     def __init__(self,
@@ -463,11 +498,16 @@ class DiagModelSensor(SensorEntity):
                     ) -> None:
         """ Class constructor """
         self._device = device
-        self._attr_name = f"Model"
+        #self._attr_name = f"Model"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-model-sensor"
         self._attr_native_value = "{}".format(MODEL_TRANSLATION[int(self._device.model)])
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -482,6 +522,7 @@ class DiagMainVersionSensor(SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "pcb_version"
     _attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
 
     def __init__(self,
@@ -489,11 +530,16 @@ class DiagMainVersionSensor(SensorEntity):
                     ) -> None:
         """ Class constructor """
         self._device = device
-        self._attr_name = f"PCB firmware version"
+        #self._attr_name = f"PCB firmware version"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-pcb-firmware-version-sensor"
         self._attr_native_value = "{}".format(self._device.firm_vers)
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -508,6 +554,7 @@ class DiagWireVersionSensor(SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "wire_version"
     _attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
 
     def __init__(self,
@@ -515,11 +562,16 @@ class DiagWireVersionSensor(SensorEntity):
                     ) -> None:
         """ Class constructor """
         self._device = device
-        self._attr_name = f"Wire controller firmware version"
+        #self._attr_name = f"Wire controller firmware version"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-wire-firmware-version-sensor"
         self._attr_native_value = "{}".format(self._device.wire_vers)
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -534,6 +586,7 @@ class CompCurrentSensor(CoordinatorEntity, SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "comp_current"
     _attr_device_class: SensorDeviceClass | None = SensorDeviceClass.CURRENT
     _attr_native_unit_of_measurement: str = UnitOfElectricCurrent.AMPERE
 
@@ -544,11 +597,16 @@ class CompCurrentSensor(CoordinatorEntity, SensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Compressor current"
+        #self._attr_name = f"Compressor current"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-compressor-current-sensor"
         self._attr_native_value = "{}".format(self._device.comp_current)
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -568,6 +626,7 @@ class FanSpeedSensor(CoordinatorEntity, SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "fan_speed"
     _attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
 
     def __init__(self,
@@ -577,11 +636,16 @@ class FanSpeedSensor(CoordinatorEntity, SensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Fan speed"
+        #self._attr_name = f"Fan speed"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-fan-speed-sensor"
         self._attr_native_value = "{}".format(self._device.fan_speed)
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:
@@ -601,6 +665,7 @@ class ErrCodeSensor(CoordinatorEntity, SensorEntity):
     # pylint: disable = too-many-instance-attributes
     """ Representation of a Sensor """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "err_code"
     _attr_entity_category: EntityCategory | None = EntityCategory.DIAGNOSTIC
 
     def __init__(self,
@@ -610,11 +675,16 @@ class ErrCodeSensor(CoordinatorEntity, SensorEntity):
         """ Class constructor """
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Error Code"
+        #self._attr_name = f"Error Code"
         self._attr_entity_registry_enabled_default = True
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-error-code-sensor"
         self._attr_native_value = "{}".format(self._device.err_code)
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     @property
     def icon(self) -> str | None:

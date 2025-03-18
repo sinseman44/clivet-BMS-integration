@@ -51,5 +51,100 @@
         "error": {
             "cannot_connect": "Impossibile connettersi al sistema Clivet"
         }
+    },
+    "entity": {
+        "sensor": {
+            "water_temp_upper_pos": {
+                "name": "Temperatura del serbatoio in posizione alta"
+            },
+            "water_temp_lower_pos": {
+                "name": "Temperatura del serbatoio in posizione bassa"
+            },
+            "t3_temp": {
+                "name": "Temperatura del condensatore"
+            },
+            "t4_temp": {
+                "name": "Temperatura ambiente esterna"
+            },
+            "tp_temp": {
+                "name": "Temperatura di scarico del compressore"
+            },
+            "th_temp": {
+                "name": "Temperatura di aspirazione"
+            },
+            "tx_temp": {
+                "name": "Visualizza la temperatura"
+            },
+            "comp_time": {
+                "name": "Tempo di esecuzione del compressore"
+            },
+            "model": {
+                "name": "Modello"
+            },
+            "pcb_version": {
+                "name": "Versione del firmware PCB"
+            },
+            "wire_version": {
+                "name": "Versione del firmware del controller a filo"
+            },
+            "comp_current": {
+                "name": "Corrente del compressore"
+            },
+            "fan_speed": {
+                "name": "Velocità della ventola"
+            },
+            "err_code": {
+                "name": "Codice di errore"
+            }
+        },
+        "binary_sensor": {
+            "wifi": {
+                "name": "Stato di connessione WiFi"
+            },
+            "defrost": {
+                "name": "Scongelamento"
+            },
+            "solar_kit": {
+                "name": "Stato del kit solare"
+            },
+            "alarm": {
+                "name": "Allarme"
+            },
+            "compressor": {
+                "name": "Compressore"
+            },
+            "elec_heater": {
+                "name": "Riscaldatore elettrico"
+            },
+            "valve": {
+                "name": "Valvola a quattro vie"
+            },
+            "solar_panel_pump": {
+                "name": "Pompa dell'acqua del pannello solare"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Alimentazione"
+            },
+            "unit": {
+                "name": "unità di misura (°C/°F)"
+            },
+            "disinfect": {
+                "name": "Disinfettare"
+            },
+            "sg": {
+                "name": "Rete intelligente"
+            },
+            "evu": {
+                "name": "Segnale solare EVU"
+            },
+            "remoter": {
+                "name": "più remoto"
+            },
+            "modbus_debug": {
+                "name": "Debug Modbus"
+            }
+        }
     }
 }

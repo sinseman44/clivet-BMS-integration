@@ -8,6 +8,7 @@ import logging
 from homeassistant.core import HomeAssistant, callback, Event, State
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.entity import EntityCategory
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.components.switch import (
     SwitchEntity,
@@ -71,8 +72,8 @@ async def async_setup_entry(hass: HomeAssistant,
 class SystemStateSwitch(CoordinatorEntity, SwitchEntity):
     """Select component to set system state """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "power"
     _attr_device_class: SwitchDeviceClass = SwitchDeviceClass.SWITCH
-    #_attr_entity_category: EntityCategory = EntityCategory.CONFIG
 
     def __init__(self,
                     coordinator: WaterHeaterCoordinator, # pylint: disable=unused-argument
@@ -80,7 +81,7 @@ class SystemStateSwitch(CoordinatorEntity, SwitchEntity):
                 ) -> None:
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Power State"
+        #self._attr_name = f"Power State"
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-power-state-switch"
         self._attr_is_on = POWER_TRANSLATION[int(self._device.power)]
@@ -91,6 +92,11 @@ class SystemStateSwitch(CoordinatorEntity, SwitchEntity):
         else:
             self._attr_state = STATE_OFF
             _LOGGER.debug("[INIT] Power State (OFF): {}".format(self._attr_state))
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     async def async_turn_on(self, **kwargs):
         """ Turn the entity on. """
@@ -139,6 +145,7 @@ class SystemStateSwitch(CoordinatorEntity, SwitchEntity):
 class UnitSwitch(CoordinatorEntity, SwitchEntity):
     """Select component to set unit mode """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "unit"
     _attr_device_class: SwitchDeviceClass = SwitchDeviceClass.SWITCH
     _attr_entity_category: EntityCategory = EntityCategory.CONFIG
 
@@ -148,10 +155,15 @@ class UnitSwitch(CoordinatorEntity, SwitchEntity):
                 ) -> None:
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Unit (°C/°F)"
+        #self._attr_name = f"Unit (°C/°F)"
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-unit-switch"
         self._attr_is_on = UNIT_TRANSLATION[int(self._device.unit_mode)]
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     async def async_turn_on(self, **kwargs):
         """ choose Fahrenheit. """
@@ -202,6 +214,7 @@ class UnitSwitch(CoordinatorEntity, SwitchEntity):
 class DisinfectSwitch(CoordinatorEntity, SwitchEntity):
     """Select component to set disinfection """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "disinfect"
     _attr_device_class: SwitchDeviceClass = SwitchDeviceClass.SWITCH
     _attr_entity_category: EntityCategory = EntityCategory.CONFIG
 
@@ -211,10 +224,15 @@ class DisinfectSwitch(CoordinatorEntity, SwitchEntity):
                 ) -> None:
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Disinfect"
+        #self._attr_name = f"Disinfect"
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-disinfect-switch"
         self._attr_is_on = DISINFECT_TRANSLATION[int(self._device.disinfect)]
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     async def async_turn_on(self, **kwargs):
         """ turn on disinfection. """
@@ -265,6 +283,7 @@ class DisinfectSwitch(CoordinatorEntity, SwitchEntity):
 class SmartGridSwitch(CoordinatorEntity, SwitchEntity):
     """Select component to set smart grid """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "sg"
     _attr_device_class: SwitchDeviceClass = SwitchDeviceClass.SWITCH
     _attr_entity_category: EntityCategory = EntityCategory.CONFIG
 
@@ -274,10 +293,15 @@ class SmartGridSwitch(CoordinatorEntity, SwitchEntity):
                 ) -> None:
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Smart Grid"
+        #self._attr_name = f"Smart Grid"
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-smart-grid-switch"
         self._attr_is_on = SG_TRANSLATION[int(self._device.smart_grid)]
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     async def async_turn_on(self, **kwargs):
         """ turn on smart grid. """
@@ -328,6 +352,7 @@ class SmartGridSwitch(CoordinatorEntity, SwitchEntity):
 class SolarSignalSwitch(CoordinatorEntity, SwitchEntity):
     """Select component to set solar signal """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "evu"
     _attr_device_class: SwitchDeviceClass = SwitchDeviceClass.SWITCH
     _attr_entity_category: EntityCategory = EntityCategory.CONFIG
 
@@ -337,10 +362,15 @@ class SolarSignalSwitch(CoordinatorEntity, SwitchEntity):
                 ) -> None:
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Solar Signal EVU"
+        #self._attr_name = f"Solar Signal EVU"
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-solar-signal-evu-switch"
         self._attr_is_on = EVU_TRANSLATION[int(self._device.evu)]
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     async def async_turn_on(self, **kwargs):
         """ turn on solar signal EVU. """
@@ -391,6 +421,7 @@ class SolarSignalSwitch(CoordinatorEntity, SwitchEntity):
 class RemoterSwitch(CoordinatorEntity, SwitchEntity):
     """Select component to set remoter mode """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "remoter"
     _attr_device_class: SwitchDeviceClass = SwitchDeviceClass.SWITCH
     _attr_entity_category: EntityCategory = EntityCategory.CONFIG
 
@@ -400,10 +431,15 @@ class RemoterSwitch(CoordinatorEntity, SwitchEntity):
                 ) -> None:
         super().__init__(coordinator)
         self._device = device
-        self._attr_name = f"Remoter"
+        #self._attr_name = f"Remoter"
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-{self._device.name}-remoter-switch"
         self._attr_is_on = REMOTER_TRANSLATION[int(self._device.remoter)]
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     async def async_turn_on(self, **kwargs):
         """ turn on remoter. """
@@ -454,6 +490,7 @@ class RemoterSwitch(CoordinatorEntity, SwitchEntity):
 class DebugStateSwitch(SwitchEntity):
     """Select component to set system state """
     _attr_has_entity_name: bool = True
+    _attr_translation_key:str = "modbus_debug"
     _attr_device_class: SwitchDeviceClass = SwitchDeviceClass.SWITCH
     _attr_entity_category: EntityCategory = EntityCategory.DIAGNOSTIC
 
@@ -462,7 +499,7 @@ class DebugStateSwitch(SwitchEntity):
                 ) -> None:
         super().__init__()
         self._device = device
-        self._attr_name = f"Modbus Debug"
+        #self._attr_name = f"Modbus Debug"
         self._attr_device_info = self._device.device_info
         self._attr_unique_id = f"{DOMAIN}-modbus-debug-switch"
         self._attr_is_on = bool(int(self._device.debug))
@@ -470,6 +507,11 @@ class DebugStateSwitch(SwitchEntity):
             self._attr_state = STATE_ON
         else:
             self._attr_state = STATE_OFF
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Get Device information."""
+        return self._attr_device_info
 
     async def async_turn_on(self, **kwargs):
         """ Turn the entity on. """

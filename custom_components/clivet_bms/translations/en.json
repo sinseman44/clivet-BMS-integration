@@ -1,0 +1,150 @@
+{
+    "title": "Clivet BMS",
+    "config": {
+        "flow_title": "Clivet BMS configuration",
+        "step": {
+            "user": {
+                "title": "Modbus communication mode",
+                "description": "Choose the communication mode according to the type of connection with the Clivet controller",
+                "data": {
+                    "Mode": "Mode"
+                }
+            },
+            "rtu": {
+                "title": "Modbus RTU Client Configuration",
+                "description": "Clivet Device Login Information",
+                "data": {
+                    "Name": "Device name",
+                    "Device": "RS485 Modbus communication device",
+                    "Address": "Device address",
+                    "Baudrate": "Modbus speed",
+                    "Sizebyte": "Data size",
+                    "Parity": "Parity",
+                    "Stopbits": "Number of stop bits",
+                    "Timeout": "Waiting time",
+                    "Debug": "Debug"
+                }
+            },
+            "tcp": {
+                "title": "Modbus TCP Client Configuration",
+                "description": "Clivet System Login Information",
+                "data": {
+                    "Name": "Device name",
+                    "Modbus": "Modbus address of the device",
+                    "Address": "Communication address",
+                    "Port": "Communication port",
+                    "Retries": "Number of reconnection attempts",
+                    "Reconnect_delay_min": "Minimum reconnection time",
+                    "Reconnect_delay_max": "Maximum reconnection time",
+                    "Timeout": "Waiting time",
+                    "Debug": "Debug"
+                }
+            },
+            "temp": {
+                "title": "Display of the temperature read in the integration",
+                "description": "There are two temperature sensors located at the top and bottom of the tank. Which reading method should I choose?",
+                "data": {
+                    "Choice": "Choice"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Unable to connect to the Clivet system"
+        }
+    },
+    "entity": {
+        "sensor": {
+            "water_temp_upper_pos": {
+                "name": "Tank temperature in high position"
+            },
+            "water_temp_lower_pos": {
+                "name": "Tank temperature in low position"
+            },
+            "t3_temp": {
+                "name": "Condenser temperature"
+            },
+            "t4_temp": {
+                "name": "Outside ambient temperature"
+            },
+            "tp_temp": {
+                "name": "Compressor exhaust temperature"
+            },
+            "th_temp": {
+                "name": "Suction temperature"
+            },
+            "tx_temp": {
+                "name": "Display temperature"
+            },
+            "comp_time": {
+                "name": "Compressor running time"
+            },
+            "model": {
+                "name": "Model"
+            },
+            "pcb_version": {
+                "name": "PCB Firmware Version"
+            },
+            "wire_version": {
+                "name": "Wired Controller Firmware Version"
+            },
+            "comp_current": {
+                "name": "Compressor current"
+            },
+            "fan_speed": {
+                "name": "Fan speed"
+            },
+            "err_code": {
+                "name": "Error code"
+            }
+        },
+        "binary_sensor": {
+            "wifi": {
+                "name": "WiFi connection status"
+            },
+            "defrost": {
+                "name": "Defrost"
+            },
+            "solar_kit": {
+                "name": "Solar kit status"
+            },
+            "alarm": {
+                "name": "Alarm"
+            },
+            "compressor": {
+                "name": "Compressor"
+            },
+            "elec_heater": {
+                "name": "Electric Heater"
+            },
+            "valve": {
+                "name": "Four-way valve"
+            },
+            "solar_panel_pump": {
+                "name": "Solar water pump"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Power supply"
+            },
+            "unit": {
+                "name": "Unit (°C/°F)"
+            },
+            "disinfect": {
+                "name": "Disinfect"
+            },
+            "sg": {
+                "name": "Smart Grid"
+            },
+            "evu": {
+                "name": "Solar Signal EVU"
+            },
+            "remoter": {
+                "name": "Remoter"
+            },
+            "modbus_debug": {
+                "name": "Debug Modbus"
+            }
+        }
+    }
+}

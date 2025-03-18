@@ -51,5 +51,100 @@
         "error": {
             "cannot_connect": "Impossible de se connecter au système Clivet"
         }
+    },
+    "entity": {
+        "sensor": {
+            "water_temp_upper_pos": {
+                "name": "Température de cuve en position haute"
+            },
+            "water_temp_lower_pos": {
+                "name": "Température de cuve en position basse"
+            },
+            "t3_temp": {
+                "name": "Température du condenseur"
+            },
+            "t4_temp": {
+                "name": "Température ambiante exterieure"
+            },
+            "tp_temp": {
+                "name": "Température d'echappement du compresseur"
+            },
+            "th_temp": {
+                "name": "Température d'aspiration"
+            },
+            "tx_temp": {
+                "name": "Température d'affichage"
+            },
+            "comp_time": {
+                "name": "Temps de fonctionnement du compresseur"
+            },
+            "model": {
+                "name": "Modèle"
+            },
+            "pcb_version": {
+                "name": "Version du micrologiciel PCB"
+            },
+            "wire_version": {
+                "name": "Version du micrologiciel du contrôleur filaire"
+            },
+            "comp_current": {
+                "name": "Courant de compresseur"
+            },
+            "fan_speed": {
+                "name": "Vitesse du ventilateur"
+            },
+            "err_code": {
+                "name": "Code d'erreur"
+            }
+        },
+        "binary_sensor": {
+            "wifi": {
+                "name": "État de connexion WiFi"
+            },
+            "defrost": {
+                "name": "Décongelation"
+            },
+            "solar_kit": {
+                "name": "Statut de kit solaire"
+            },
+            "alarm": {
+                "name": "Alarme"
+            },
+            "compressor": {
+                "name": "Compresseur"
+            },
+            "elec_heater": {
+                "name": "Resistance électrique"
+            },
+            "valve": {
+                "name": "Valve à quatre voies"
+            },
+            "solar_panel_pump": {
+                "name": "Pompe à eau solaire"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Alimentation"
+            },
+            "unit": {
+                "name": "Unité de mesure (°C/°F)"
+            },
+            "disinfect": {
+                "name": "Désinfecter"
+            },
+            "sg": {
+                "name": "Smart Grid"
+            },
+            "evu": {
+                "name": "Signal solaire EVU"
+            },
+            "remoter": {
+                "name": "télécommande"
+            },
+            "modbus_debug": {
+                "name": "Debug Modbus"
+            }
+        }
     }
 }
