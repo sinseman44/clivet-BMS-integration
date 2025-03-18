@@ -122,7 +122,7 @@ class ClivetWaterHeaterEntity(CoordinatorEntity, WaterHeaterEntity):
         _LOGGER.debug("[Water Heater] set target temp - kwargs: {}".format(kwargs))
         if "temperature" in kwargs:
             _target_temp = kwargs.get("temperature")
-            _ret = await self._device.async_set_target_temp(temp = target_temp)
+            _ret = await self._device.async_set_target_temp(temp = _target_temp)
             if not _ret:
                 _LOGGER.error("[Water Heater] Error sending target temperature: {}".format(_target_temp))
         else:
